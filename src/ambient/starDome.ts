@@ -8,20 +8,19 @@ class StarDome {
   calibrationDst: number = 2000;
   brightnessMinMax: THREE.Vector2;
   camera: THREE.PerspectiveCamera;
-  mainScene: THREE.Scene;
+  starGroup: THREE.Group;
 
   constructor(
     starMesh: THREE.Mesh,
     radiusMinMax: THREE.Vector2,
     brightnessMinMax: THREE.Vector2,
-    camera: THREE.PerspectiveCamera,
-    mainScene: THREE.Scene
+    camera: THREE.PerspectiveCamera
   ) {
     this.starMesh = starMesh;
     this.radiusMinMax = radiusMinMax;
     this.brightnessMinMax = brightnessMinMax;
     this.camera = camera;
-    this.mainScene = mainScene;
+    this.starGroup = new THREE.Group();
 
     const starDst = 120000; //camera.far - radiusMinMax.y;
     const scale = starDst / this.calibrationDst;
@@ -44,7 +43,7 @@ class StarDome {
       });
       //console.log(star.material);
       star.name = "star" + i;
-      this.mainScene.add(star);
+      this.starGroup.add(star);
     }
   }
 

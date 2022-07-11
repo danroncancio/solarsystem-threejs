@@ -1,7 +1,7 @@
 import "./style.css";
 import "./style.css";
 import * as THREE from "three";
-import * as dat from "dat.gui";
+//import * as dat from "dat.gui";
 import Stats from "stats.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import CelestialBody from "./planets/celestialBody";
@@ -20,7 +20,7 @@ let composer: EffectComposer, afterimagePass: AfterimagePass;
 
 let renderer: THREE.WebGLRenderer;
 let controls: OrbitControls;
-const gui = new dat.GUI({ name: "DebugMenu" }); // Debug util
+//const gui = new dat.GUI({ name: "DebugMenu" }); // Debug util
 const stats = new Stats();
 let time = Date.now();
 const scene = new THREE.Scene();
@@ -54,12 +54,12 @@ sunLight.shadow.mapSize.set(1024 * 250, 1024 * 250);
 sunLight.shadow.camera.far = 1000;
 sunLight.shadow.bias = -0.0001;
 
-const sphereSize = 10000;
-const pointLightHelper = new THREE.PointLightHelper(
-  sunLight,
-  sphereSize,
-  new THREE.Color(100, 0, 100)
-);
+//const sphereSize = 10000;
+//const pointLightHelper = new THREE.PointLightHelper(
+//  sunLight,
+//  sphereSize,
+//  new THREE.Color(100, 0, 100)
+//);
 scene.add(sunLight);
 //scene.add(pointLightHelper);
 
@@ -158,9 +158,9 @@ const starDome = new StarDome(
   starMesh,
   new THREE.Vector2(3, 13),
   new THREE.Vector2(0.1, 0.9),
-  camera,
-  scene
+  camera
 );
+scene.add(starDome.starGroup);
 console.log(scene);
 
 function animate() {
